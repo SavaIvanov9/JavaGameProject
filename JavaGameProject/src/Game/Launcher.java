@@ -4,6 +4,6 @@ import Display.Display;
 
 public class Launcher {
     public static void main(String[] args) {
-        new Display("Maze Runner",800,600);
+        new Display("Maze Runner",500,400);
     }
 }
