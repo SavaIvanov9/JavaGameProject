@@ -1,10 +1,9 @@
 package Game;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Map;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
     private  Timer timer;
@@ -24,8 +23,15 @@ public class Board extends JPanel implements ActionListener {
 
     public void paint (Graphics g){
         super.paint(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(45,60,32,32);
-
+        for (int y = 0; y < 22; y++) {
+            for (int x = 0; x < 22; x++) {
+                if (map.getMap(x, y).equals("g")) {
+                    g.drawImage(map.getGrass(), x * 30, y * 30, null);
+                }
+                if (map.getMap(x,y).equals("w")){
+                    g.drawImage(map.getWall(), x * 30, y * 30, null);
+                }
+            }
+        }
     }
 }

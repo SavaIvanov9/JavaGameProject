@@ -1,25 +1,27 @@
 package Display;
 
+import Game.Board;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Display {
-    private int width = 800;
-    private int height = 600;
+    private int width = 666;
+    private int height = 688;
     private String title;
 
     private JFrame frame;
     private Canvas canvas;
 
-    public Display(String title, int width, int height) {
+    public Display(String title) {
         this.title = title;
-        this.width = width;
-        this.height = height;
         createFrame();
     }
 
     public void createFrame() {
-        frame = new JFrame(this.title);
+        JFrame frame = new JFrame();
+        frame.setTitle(this.title);
+        frame.add(new Board());
         frame.setSize(this.width, this.height);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -27,13 +29,5 @@ public class Display {
         frame.setFocusable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        canvas = new Canvas();
-        canvas.setPreferredSize(new Dimension(this.width, this.height));
-        canvas.setMaximumSize(new Dimension(this.width, this.height));
-        canvas.setMinimumSize(new Dimension(this.width, this.height));
-
-        frame.add(canvas);
-
-        frame.pack();
     }
 }
