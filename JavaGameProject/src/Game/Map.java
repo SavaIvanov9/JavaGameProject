@@ -12,13 +12,19 @@ public class Map {
     private String[] Map = new String[len];
 
     private Image grass,
-            wall;
+            wall,
+            door,
+            player;
 
     public Map() {
-        ImageIcon img = new ImageIcon("resources\\grass.jpg");
+        ImageIcon img = new ImageIcon("resources\\grass2.jpg");
         grass = img.getImage();
-        img = new ImageIcon("resources\\wall.jpg");
+        img = new ImageIcon("resources\\wall4.jpg");
         wall = img.getImage();
+        img = new ImageIcon("resources\\door.closed1.png");
+        door = img.getImage();
+        img = new ImageIcon("resources\\player1.png");
+        player = img.getImage();
 
         openFile();
         readFile();
@@ -33,6 +39,10 @@ public class Map {
         return wall;
     }
 
+    public Image getDoor () { return door; }
+
+    public Image getPlayer () { return player; }
+
     public String getMap(int x, int y) {
         String index = Map[y].substring(x, x + 1);
         return index;
@@ -40,7 +50,7 @@ public class Map {
 
     public void openFile() {
         try {
-            m = new Scanner(new File("C:\\Users\\pc1\\Desktop\\MazeGame\\Images\\im\\Map.txt"));
+            m = new Scanner(new File("resources\\Map1.txt"));
         } catch (Exception e) {
             System.out.println("error loading map");
         }

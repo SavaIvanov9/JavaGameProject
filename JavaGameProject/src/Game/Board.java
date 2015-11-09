@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
-    private  Timer timer;
+    //private  Timer timer;
 
     private Map map;
 
     public Board(){
         map = new Map();
 
-        timer = new Timer(25, this);
-        timer.start();
+        //timer = new Timer(25, this);
+        //timer.start();
     }
 
     public void actionPerformed (ActionEvent e){
@@ -28,8 +28,14 @@ public class Board extends JPanel implements ActionListener {
                 if (map.getMap(x, y).equals("g")) {
                     g.drawImage(map.getGrass(), x * 30, y * 30, null);
                 }
-                if (map.getMap(x,y).equals("w")){
+                if (map.getMap(x, y).equals("w")){
                     g.drawImage(map.getWall(), x * 30, y * 30, null);
+                }
+                if (map.getMap(x, y).equals("d")) {
+                    g.drawImage(map.getDoor(), x * 30, y * 30, null);
+                }
+                if (map.getMap(x, y).equals("p")) {
+                    g.drawImage(map.getPlayer(), x * 30, y * 30, null);
                 }
             }
         }
