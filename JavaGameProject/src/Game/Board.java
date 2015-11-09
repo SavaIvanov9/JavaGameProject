@@ -43,7 +43,7 @@ public class Board extends JPanel implements ActionListener {
                 }
             }
         }
-        g.drawImage(p.getPlayer(), p.getX(), p.getY(), null);
+        g.drawImage(p.getPlayer(), p.getTileX() * 30, p.getTileY() * 30, null);
         repaint();
     }
 
@@ -54,16 +54,24 @@ public class Board extends JPanel implements ActionListener {
             int keyCode = e.getKeyCode();
 
             if (keyCode == KeyEvent.VK_UP) {
-                p.move(0, -30, 0, -1);
+                if(!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) {
+                    p.move(0, -1);
+                }
             }
             if (keyCode == KeyEvent.VK_DOWN) {
-                p.move(0, 30, 0, 1);
+                if(!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) {
+                    p.move(0, 1);
+                }
             }
             if (keyCode == KeyEvent.VK_LEFT) {
-                p.move(-30, 0, -1, 0);
+                if(!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) {
+                    p.move( -1, 0);
+                }
             }
             if (keyCode == KeyEvent.VK_RIGHT) {
-                p.move(30, 0, 1, 0);
+                if(!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
+                    p.move( 1, 0);
+                }
             }
         }
 
