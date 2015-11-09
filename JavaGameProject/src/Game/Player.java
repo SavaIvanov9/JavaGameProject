@@ -1,14 +1,18 @@
 package Game;
 
-import javax.swing.*;
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
 
 public class Player {
     private int tileX,tileY;
     private Image player;
     public Player (){
-        ImageIcon img = new ImageIcon("resources\\Player1.png");
-        player = img.getImage();
+        try{
+            player = ImageIO.read(new File("resources\\Player.png"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         tileX = 11;
         tileY = 11;

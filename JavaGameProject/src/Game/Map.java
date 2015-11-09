@@ -1,6 +1,6 @@
 package Game;
 
-import javax.swing.*;
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.util.Scanner;
@@ -16,12 +16,21 @@ public class Map {
             door;
 
     public Map() {
-        ImageIcon img = new ImageIcon("resources\\grass2.jpg");
-        grass = img.getImage();
-        img = new ImageIcon("resources\\wall4.jpg");
-        wall = img.getImage();
-        img = new ImageIcon("resources\\door.closed1.png");
-        door = img.getImage();
+        try{
+            grass = ImageIO.read(new File("resources\\grass2.jpg"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            wall = ImageIO.read(new File("resources\\wall4.jpg"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            door = ImageIO.read(new File("resources\\door.closed1.png"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         openFile();
         readFile();
