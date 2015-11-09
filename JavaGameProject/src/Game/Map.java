@@ -13,8 +13,7 @@ public class Map {
 
     private Image grass,
             wall,
-            door,
-            player;
+            door;
 
     public Map() {
         ImageIcon img = new ImageIcon("resources\\grass2.jpg");
@@ -23,8 +22,6 @@ public class Map {
         wall = img.getImage();
         img = new ImageIcon("resources\\door.closed1.png");
         door = img.getImage();
-        img = new ImageIcon("resources\\player1.png");
-        player = img.getImage();
 
         openFile();
         readFile();
@@ -40,8 +37,6 @@ public class Map {
     }
 
     public Image getDoor () { return door; }
-
-    public Image getPlayer () { return player; }
 
     public String getMap(int x, int y) {
         String index = Map[y].substring(x, x + 1);

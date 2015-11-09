@@ -23,7 +23,6 @@ public class Display {
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.setFocusable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
