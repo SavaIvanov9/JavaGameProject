@@ -13,6 +13,7 @@ public class Board extends JPanel implements ActionListener {
     private Map map;
     private Player p;
 
+
     public Board() {
         map = new Map();
         p = new Player();

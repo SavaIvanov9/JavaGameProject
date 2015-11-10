@@ -54,6 +54,7 @@ public class Map {
     public Image getDoor() {
         return door;
     }
+
     public Image getTeleportPoint(){
         return teleportPoint;
     }
