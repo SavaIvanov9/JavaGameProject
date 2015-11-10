@@ -30,8 +30,8 @@ public class Board extends JPanel implements ActionListener {
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (int y = 0; y < 22; y++) {
-            for (int x = 0; x < 22; x++) {
+        for (int y = 0; y < 23; y++) {
+            for (int x = 0; x < 23; x++) {
                 if (map.getMap(x, y).equals("g")) {
                     g.drawImage(map.getGrass(), x * 30, y * 30, null);
                 }
@@ -40,6 +40,9 @@ public class Board extends JPanel implements ActionListener {
                 }
                 if (map.getMap(x, y).equals("d")) {
                     g.drawImage(map.getDoor(), x * 30, y * 30, null);
+                }
+                if (map.getMap(x, y).equals("t")) {
+                    g.drawImage(map.getTeleportPoint(), x * 30, y * 30, null);
                 }
             }
         }
@@ -54,28 +57,37 @@ public class Board extends JPanel implements ActionListener {
             int keyCode = e.getKeyCode();
 
             if (keyCode == KeyEvent.VK_UP) {
-                if(!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) {
+                if (!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) {
                     p.move(0, -1);
                 }
             }
             if (keyCode == KeyEvent.VK_DOWN) {
-                if(!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) {
+                if (!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) {
                     p.move(0, 1);
                 }
             }
             if (keyCode == KeyEvent.VK_LEFT) {
-                if(!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) {
-                    p.move( -1, 0);
+                if (!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) {
+                    p.move(-1, 0);
                 }
             }
             if (keyCode == KeyEvent.VK_RIGHT) {
-                if(!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
-                    p.move( 1, 0);
+                if (!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
+                    p.move(1, 0);
                 }
+            }
+            if (p.getTileX() == 1 && p.getTileY() == 1) {
+                p.move(20, 20);
+            }else if (p.getTileX() == 21 && p.getTileY() == 21) {
+                p.move(-20, -20);
+            }else if (p.getTileX() == 1 && p.getTileY() == 21) {
+                p.move(20, -20);
+            }else if (p.getTileX() == 21 && p.getTileY() == 1) {
+                p.move(-20, 20);
             }
         }
 
-        public void keyRelased(KeyEvent e) {
+        public void keyReleased(KeyEvent e) {
 
         }
 
