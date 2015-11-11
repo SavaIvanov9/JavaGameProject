@@ -1,5 +1,7 @@
 package Game;
 
+import Gfx.ImageLoader;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
@@ -17,44 +19,18 @@ public class Map {
             doorClosed,
             teleportPoint,
             finish,
-            end;
+            winnerEnd,
+            loserEnd;
 
     public Map() {
-        try {
-            grass = ImageIO.read(new File("resources\\grass2.jpg"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            wall = ImageIO.read(new File("resources\\wall4.jpg"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            doorOpened = ImageIO.read(new File("resources\\doorOpened.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            doorClosed = ImageIO.read(new File("resources\\doorClosed.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            teleportPoint = ImageIO.read(new File("resources\\teleport.jpg"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try {
-            finish = ImageIO.read(new File("resources\\doorClosed.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            end = ImageIO.read(new File("resources\\nakich.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        grass = ImageLoader.loadImage("resources\\grass2.jpg");
+        wall = ImageLoader.loadImage("resources\\wall4.jpg");
+        doorOpened = ImageLoader.loadImage("resources\\doorClosed.png");
+        doorClosed = ImageLoader.loadImage("resources\\doorClosed.png");
+        teleportPoint = ImageLoader.loadImage("resources\\teleport.jpg");
+        finish = ImageLoader.loadImage("resources\\doorClosed.png");
+        winnerEnd = ImageLoader.loadImage("resources\\nakich.png");
+        loserEnd = ImageLoader.loadImage("resources\\nakovv.jpg");
 
         openFile();
         readFile();
@@ -85,8 +61,11 @@ public class Map {
         return finish;
     }
 
-    public Image getEnd(){
-        return end;
+    public Image getWinnerEnd(){
+        return winnerEnd;
+    }
+    public Image getLoserEnd(){
+        return loserEnd;
     }
 
     public String getMap(int x, int y) {
@@ -97,6 +76,27 @@ public class Map {
     public void openFile() {
         try {
             m = new Scanner(new File("resources\\Map1.txt"));
+        } catch (Exception e) {
+            System.out.println("error loading map");
+        }
+    }
+    public void openFileTwo() {
+        try {
+            m = new Scanner(new File("resources\\Map2.txt"));
+        } catch (Exception e) {
+            System.out.println("error loading map");
+        }
+    }
+    public void openFileThree() {
+        try {
+            m = new Scanner(new File("resources\\Map3.txt"));
+        } catch (Exception e) {
+            System.out.println("error loading map");
+        }
+    }
+    public void openFileFour() {
+        try {
+            m = new Scanner(new File("resources\\Map4.txt"));
         } catch (Exception e) {
             System.out.println("error loading map");
         }

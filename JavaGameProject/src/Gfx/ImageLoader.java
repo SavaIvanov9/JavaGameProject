@@ -1,17 +1,19 @@
 package Gfx;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class ImageLoader {
 
-    public static BufferedImage loadImage(String path) {
+    public static Image loadImage(String path) {
         try {
-            return ImageIO.read(ImageLoader.class.getResource(path));
-        } catch (IOException e) {
+            return ImageIO.read(new File(path));
+        } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }
