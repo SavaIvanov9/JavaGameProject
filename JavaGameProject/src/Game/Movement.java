@@ -46,6 +46,16 @@ public class Movement extends KeyAdapter {
                 this.p.movePlayer(currPlayerRow, currPLayerCol + 1);
             }
         }
+        if (p.getRow() == 1 && p.getCol() == 1) {
+            p.movePlayer(21, 21);
+        }else if (p.getRow() == 21 && p.getCol() == 21) {
+            p.movePlayer(1, 1);
+        }else if (p.getRow() == 1 && p.getCol() == 21) {
+            p.movePlayer(21, 1);
+        }else if (p.getRow() == 21 && p.getCol() == 1) {
+            p.movePlayer(1, 21);
+        }
+
     }
 
     public boolean canMove(String direction){

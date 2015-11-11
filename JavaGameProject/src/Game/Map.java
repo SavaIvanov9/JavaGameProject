@@ -23,6 +23,7 @@ public class Map {
             wall,
             doorOpened,
             doorClosed,
+            teleportPoint,
             player;
 
     public Map() {
@@ -32,6 +33,7 @@ public class Map {
         wall = img.getImage();
         doorOpened = new ImageIcon("resources\\doorOpened.png").getImage();
         doorClosed = new ImageIcon("resources\\doorClosed.png").getImage();
+        teleportPoint = new ImageIcon("resources\\teleport.jpg").getImage();
         img = new ImageIcon("resources\\player1.png");
         player = img.getImage();
 
@@ -54,6 +56,10 @@ public class Map {
 
     public Image getDoorClosed() {
         return doorClosed;
+    }
+
+    public Image getTeleportPoint() {
+        return teleportPoint;
     }
 
     public Image getPlayer () { return player; }
