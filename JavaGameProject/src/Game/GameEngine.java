@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.sound.sampled.*;
 
 
 public class GameEngine extends JPanel implements ActionListener {
@@ -33,6 +34,9 @@ public class GameEngine extends JPanel implements ActionListener {
         timer.start();
 
 
+
+
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -57,7 +61,7 @@ public class GameEngine extends JPanel implements ActionListener {
                     if (map.getMap(x, y).equals("f")) {
                         g.drawImage(map.getFinish(), x * 30, y * 30, null);
                     }
-                    if (map.getMap(x, y).equals("g")) {
+                    if (map.getMap(x, y).equals("-")) {
                         g.drawImage(map.getGrass(), x * 30, y * 30, null);
                     }
                     if (map.getMap(x, y).equals("w")) {
@@ -114,6 +118,9 @@ public class GameEngine extends JPanel implements ActionListener {
                 if (!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
                     p.move(1, 0);
                 }
+
+            }
+            if (keyCode == KeyEvent.VK_M) {
 
             }
             if (p.getTileX() == 1 && p.getTileY() == 1) {

@@ -24,8 +24,6 @@ public class Sound {
             }
 
             MGP.start(loop);
-        } else {
-            return;
         }
     }
 }
