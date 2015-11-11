@@ -67,8 +67,11 @@ public class GameEngine extends JPanel implements ActionListener {
                     if (map.getMap(x, y).equals("w")) {
                         g.drawImage(map.getWall(), x * 30, y * 30, null);
                     }
-                    if (map.getMap(x, y).equals("d")) {
-                        g.drawImage(map.getDoor(), x * 30, y * 30, null);
+                    if (map.getMap(x, y).equals("o")) {
+                        g.drawImage(map.getDoorOpened(), x * 30, y * 30, null);
+                    }
+                    if (map.getMap(x, y).equals("c")) {
+                        g.drawImage(map.getDoorClosed(), x * 30, y * 30, null);
                     }
                     if (map.getMap(x, y).equals("t")) {
                         g.drawImage(map.getTeleportPoint(), x * 30, y * 30, null);
@@ -97,25 +100,29 @@ public class GameEngine extends JPanel implements ActionListener {
             int keyCode = e.getKeyCode();
 
             if (keyCode == KeyEvent.VK_UP) {
-                if (!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) {
+                if ((!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) &&
+                        (!map.getMap(p.getTileX(), p.getTileY() - 1).equals("c"))) {
                     p.move(0, -1);
                 }
 
             }
             if (keyCode == KeyEvent.VK_DOWN) {
-                if (!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) {
+                if ((!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) &&
+                        (!map.getMap(p.getTileX(), p.getTileY() + 1).equals("c"))) {
                     p.move(0, 1);
                 }
 
             }
             if (keyCode == KeyEvent.VK_LEFT) {
-                if (!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) {
+                if ((!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) &&
+                        (!map.getMap(p.getTileX() - 1, p.getTileY()).equals("c"))) {
                     p.move(-1, 0);
                 }
 
             }
             if (keyCode == KeyEvent.VK_RIGHT) {
-                if (!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
+                if ((!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) &&
+                        (!map.getMap(p.getTileX() + 1, p.getTileY()).equals("c"))){
                     p.move(1, 0);
                 }
 

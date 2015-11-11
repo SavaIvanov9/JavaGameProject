@@ -13,7 +13,8 @@ public class Map {
 
     private Image grass,
             wall,
-            door,
+            doorOpened,
+            doorClosed,
             teleportPoint,
             finish,
             end;
@@ -30,7 +31,12 @@ public class Map {
             e.printStackTrace();
         }
         try {
-            door = ImageIO.read(new File("resources\\door.closed1.png"));
+            doorOpened = ImageIO.read(new File("resources\\doorOpened.png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            doorClosed = ImageIO.read(new File("resources\\doorClosed.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,7 +46,7 @@ public class Map {
             e.printStackTrace();
         }
         try {
-            finish = ImageIO.read(new File("resources\\door.closed1.png"));
+            finish = ImageIO.read(new File("resources\\doorClosed.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,8 +69,12 @@ public class Map {
         return wall;
     }
 
-    public Image getDoor() {
-        return door;
+    public Image getDoorOpened() {
+        return doorOpened;
+    }
+
+    public Image getDoorClosed() {
+        return doorClosed;
     }
 
     public Image getTeleportPoint(){
