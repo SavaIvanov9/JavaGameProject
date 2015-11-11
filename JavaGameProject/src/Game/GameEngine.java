@@ -22,7 +22,7 @@ public class GameEngine extends JPanel implements ActionListener {
 
 
     public GameEngine() {
-        Sound.music();
+        Sound.music(true);
         map = new Map();
         p = new Player();
 
@@ -39,6 +39,7 @@ public class GameEngine extends JPanel implements ActionListener {
 
         if(map.getMap(p.getTileX(), p.getTileY()).equals("f")){
             Message = "Winner";
+            Sound.music(false);
             isRunning = true;
 
         }
