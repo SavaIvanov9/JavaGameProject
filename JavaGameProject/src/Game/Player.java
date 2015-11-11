@@ -1,34 +1,25 @@
 package Game;
 
-import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class Player {
-    private int tileX,tileY;
-    private Image player;
-    public Player (){
-        try{
-            player = ImageIO.read(new File("resources\\Player.png"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        tileX = 11;
-        tileY = 11;
-    }
-    public Image getPlayer (){
-        return player;
+    private int row, col;
+    public Player (int row ,int col){
+        this.row = row;
+        this.col = col;
     }
 
-    public int getTileX (){
-        return tileX;
+    public int getRow() {
+        return row;
     }
-    public int getTileY (){
-        return tileY;
+
+    public int getCol() {
+        return col;
     }
-    public void move(int tx, int ty){
-        tileX += tx;
-        tileY += ty;
+
+    public void movePlayer(int row, int col){
+        this.row = row;
+        this.col = col;
     }
 }
