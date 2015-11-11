@@ -16,16 +16,16 @@ public class InputHandler implements KeyListener {
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            Game.player.goingUp = true;
+            GameEngine.player.goingUp = true;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            Game.player.goingDown = true;
+            GameEngine.player.goingDown = true;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
-            Game.player.goingLeft = true;
+            GameEngine.player.goingLeft = true;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
-            Game.player.goingRight = true;
+            GameEngine.player.goingRight = true;
         }
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
@@ -43,16 +43,16 @@ public class InputHandler implements KeyListener {
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            Game.player.goingUp = false;
+            GameEngine.player.goingUp = false;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            Game.player.goingDown = false;
+            GameEngine.player.goingDown = false;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
-            Game.player.goingLeft = false;
+            GameEngine.player.goingLeft = false;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
-            Game.player.goingRight = false;
+            GameEngine.player.goingRight = false;
         }
     }
 }

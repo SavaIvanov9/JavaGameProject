@@ -6,15 +6,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
-public class Board extends JPanel implements ActionListener {
+import Gfx.*;
+
+public class GameEngine extends JPanel implements ActionListener {
     private Timer timer;
+
+    private Image endImg;
 
     private Map map;
     private Player p;
 
+    private boolean isRunning = false;
 
-    public Board() {
+    private String Message = "";
+    private Font font = new Font("Serif", Font.BOLD, 125);
+
+    public GameEngine() {
         map = new Map();
         p = new Player();
 
@@ -23,32 +32,53 @@ public class Board extends JPanel implements ActionListener {
 
         timer = new Timer(25, this);
         timer.start();
+
+
     }
 
     public void actionPerformed(ActionEvent e) {
+        if(map.getMap(p.getTileX(), p.getTileY()).equals("f")){
+            Message = "Winner";
+            isRunning = true;
+        }
         repaint();
     }
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (int y = 0; y < 23; y++) {
-            for (int x = 0; x < 23; x++) {
-                if (map.getMap(x, y).equals("g")) {
-                    g.drawImage(map.getGrass(), x * 30, y * 30, null);
+        if(!isRunning) {
+            for (int y = 0; y < 23; y++) {
+                for (int x = 0; x < 23; x++) {
+                    if (map.getMap(x, y).equals("f")) {
+                        g.drawImage(map.getFinish(), x * 30, y * 30, null);
+                    }
+                    if (map.getMap(x, y).equals("g")) {
+                        g.drawImage(map.getGrass(), x * 30, y * 30, null);
+                    }
+                    if (map.getMap(x, y).equals("w")) {
+                        g.drawImage(map.getWall(), x * 30, y * 30, null);
+                    }
+                    if (map.getMap(x, y).equals("d")) {
+                        g.drawImage(map.getDoor(), x * 30, y * 30, null);
+                    }
+                    if (map.getMap(x, y).equals("t")) {
+                        g.drawImage(map.getTeleportPoint(), x * 30, y * 30, null);
+                    }
                 }
-                if (map.getMap(x, y).equals("w")) {
-                    g.drawImage(map.getWall(), x * 30, y * 30, null);
-                }
-                if (map.getMap(x, y).equals("d")) {
-                    g.drawImage(map.getDoor(), x * 30, y * 30, null);
-                }
-                if (map.getMap(x, y).equals("t")) {
-                    g.drawImage(map.getTeleportPoint(), x * 30, y * 30, null);
-                }
+                g.drawImage(p.getPlayer(), p.getTileX() * 30, p.getTileY() * 30, null);
             }
         }
-        g.drawImage(p.getPlayer(), p.getTileX() * 30, p.getTileY() * 30, null);
-        repaint();
+        if(isRunning) {
+
+            //endImg = ImageLoader.loadImage("\\resources\\nakich.png");
+            g.drawImage(map.getEnd(), 70, 30, null);
+            //ImageLoader.loadImage("\\resources\\nakich.png");
+            g.setColor(Color.BLUE);
+            g.setFont(font);
+            g.drawString(Message, 150, 200);
+        }
+
+
     }
 
     public class Moves extends KeyAdapter {
@@ -61,21 +91,25 @@ public class Board extends JPanel implements ActionListener {
                 if (!map.getMap(p.getTileX(), p.getTileY() - 1).equals("w")) {
                     p.move(0, -1);
                 }
+
             }
             if (keyCode == KeyEvent.VK_DOWN) {
                 if (!map.getMap(p.getTileX(), p.getTileY() + 1).equals("w")) {
                     p.move(0, 1);
                 }
+
             }
             if (keyCode == KeyEvent.VK_LEFT) {
                 if (!map.getMap(p.getTileX() - 1, p.getTileY()).equals("w")) {
                     p.move(-1, 0);
                 }
+
             }
             if (keyCode == KeyEvent.VK_RIGHT) {
                 if (!map.getMap(p.getTileX() + 1, p.getTileY()).equals("w")) {
                     p.move(1, 0);
                 }
+
             }
             if (p.getTileX() == 1 && p.getTileY() == 1) {
                 p.move(20, 20);
@@ -87,13 +121,7 @@ public class Board extends JPanel implements ActionListener {
                 p.move(-20, 20);
             }
         }
-
-        public void keyReleased(KeyEvent e) {
-
-        }
-
-        public void keyTyped(KeyEvent e) {
-
-        }
     }
 }
+
+

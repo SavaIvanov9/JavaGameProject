@@ -1,4 +1,5 @@
-package Game;
+package game;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,9 +15,7 @@ public class Map {
     private Image grass,
             wall,
             door,
-            teleportPoint,
-            finish,
-            end;
+            teleportPoint;
 
     public Map() {
         try {
@@ -39,16 +38,6 @@ public class Map {
         }catch (Exception e){
             e.printStackTrace();
         }
-        try {
-            finish = ImageIO.read(new File("resources\\door.closed1.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            end = ImageIO.read(new File("resources\\nakich.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         openFile();
         readFile();
@@ -69,14 +58,6 @@ public class Map {
 
     public Image getTeleportPoint(){
         return teleportPoint;
-    }
-
-    public Image getFinish(){
-        return finish;
-    }
-
-    public Image getEnd(){
-        return end;
     }
 
     public String getMap(int x, int y) {

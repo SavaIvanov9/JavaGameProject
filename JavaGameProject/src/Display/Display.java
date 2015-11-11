@@ -1,6 +1,6 @@
 package Display;
 
-import Game.Board;
+import Game.GameEngine;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class Display {
     public void createFrame() {
         JFrame frame = new JFrame();
         frame.setTitle(this.title);
-        frame.add(new Board());
+        frame.add(new GameEngine());
         frame.setSize(this.width, this.height);
         frame.setResizable(false);
         frame.setVisible(true);

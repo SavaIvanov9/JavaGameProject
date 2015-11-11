@@ -14,8 +14,8 @@ public class Player {
             e.printStackTrace();
         }
 
-        tileX = 11;
-        tileY = 11;
+        tileX = 10;
+        tileY = 10;
     }
     public Image getPlayer (){
         return player;
