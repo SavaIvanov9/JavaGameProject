@@ -6,14 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 
-import Gfx.*;
 
 public class GameEngine extends JPanel implements ActionListener {
     private Timer timer;
 
-    private Image endImg;
 
     private Map map;
     private Player p;
@@ -23,7 +20,9 @@ public class GameEngine extends JPanel implements ActionListener {
     private String Message = "";
     private Font font = new Font("Serif", Font.BOLD, 125);
 
+
     public GameEngine() {
+        Sound.music();
         map = new Map();
         p = new Player();
 
@@ -37,16 +36,21 @@ public class GameEngine extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+
         if(map.getMap(p.getTileX(), p.getTileY()).equals("f")){
             Message = "Winner";
             isRunning = true;
+
         }
         repaint();
     }
 
     public void paint(Graphics g) {
+
         super.paint(g);
         if(!isRunning) {
+
+
             for (int y = 0; y < 23; y++) {
                 for (int x = 0; x < 23; x++) {
                     if (map.getMap(x, y).equals("f")) {
