@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-public class GameEngine implements Runnable{
+public class Game implements Runnable{
     private Display display;
     public int width, height;
     public String title;
@@ -34,9 +34,7 @@ public class GameEngine implements Runnable{
     public static Player player;
     public static Rectangle enemy;
 
-
-
-    public GameEngine(String title, int width, int height) {
+    public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
@@ -64,7 +62,6 @@ public class GameEngine implements Runnable{
 
         player = new Player();
         enemy = new Rectangle(50, 50, 20, 20);
-
     }
 
 
@@ -181,7 +178,7 @@ public class GameEngine implements Runnable{
         }
         //Setting the while-game-loop to run
         running = true;
-        //Initialize the thread that will work with "this" class (game.GameEngine)
+        //Initialize the thread that will work with "this" class (game.Game)
         thread = new Thread(this);
         //The start method will call start the new thread and it will call
         //the run method in our class

@@ -23,7 +23,7 @@ public class Player {
         this.width = 95;
         this.height = 130;
         this.health = 50;
-        this.velocity = 4;
+        this.velocity = 2;
         this.boundingBox = new Rectangle(this.width, this.height);
 
         goingUp = false;
