@@ -23,7 +23,8 @@ public class Map {
             wall,
             doorOpened,
             doorClosed,
-            teleportPoint,
+            teleportPointG,
+            teleportPointR,
             player;
 
 
@@ -34,7 +35,9 @@ public class Map {
         wall = img.getImage();
         doorOpened = new ImageIcon("resources\\doorOpened.png").getImage();
         doorClosed = new ImageIcon("resources\\doorClosed.png").getImage();
-        teleportPoint = new ImageIcon("resources\\teleport.jpg").getImage();
+        teleportPointR = new ImageIcon("resources\\r1.png").getImage();
+        teleportPointG = new ImageIcon("resources\\g1.png").getImage();
+
         img = new ImageIcon("resources\\player1.png");
         player = img.getImage();
 
@@ -60,8 +63,11 @@ public class Map {
         return doorClosed;
     }
 
-    public Image getTeleportPoint() {
-        return teleportPoint;
+    public Image getTeleportPointR() {
+        return teleportPointR;
+    }
+    public Image getTeleportPointG() {
+        return teleportPointG;
     }
 
 
@@ -108,7 +114,7 @@ public class Map {
 
     public void openFile() {
         try {
-            m = new Scanner(new File("resources\\Map1.txt"));
+            m = new Scanner(new File("resources\\Map2.txt"));
         } catch (Exception e) {
             System.out.println("error loading map");
         }
