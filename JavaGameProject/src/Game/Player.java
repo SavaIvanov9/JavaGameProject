@@ -1,8 +1,5 @@
 package Game;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class Player {
     private int row, col;
     public Player (int row ,int col){

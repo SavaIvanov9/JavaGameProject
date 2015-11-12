@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public class Map {
     private Scanner m;

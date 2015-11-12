@@ -14,22 +14,25 @@ public class GameEngine extends JPanel implements ActionListener {
 
     private Map mapObj;
     private Player p;
+
     private String Message = "";
     private String Message2 = "";
+
     private Font font = new Font("Serif", Font.BOLD, 125);
     private Image EndScreen;
     private Image EndScreen2;
+
     private boolean isRunning = true;
+    private boolean youLoose = false;
+
     private int Counter = 0;
+
     private Image red1;
     private Image red2;
     private Image red3;
     private Image green1;
     private Image green2;
     private Image green3;
-
-
-
 
     public GameEngine(){
         try {
@@ -112,7 +115,6 @@ public class GameEngine extends JPanel implements ActionListener {
 
             ArrayList<ArrayList<String>> map = this.mapObj.getMap();
 
-
             for (int x = 0; x < map.size(); x++) {
                 for (int y = 0; y < map.get(0).size(); y++) {
                     String currPosition = map.get(x).get(y);
@@ -134,7 +136,6 @@ public class GameEngine extends JPanel implements ActionListener {
                         currImg = mapObj.getGrass();
                         g.drawImage(currImg, y * 30, x * 30, null);
                     }
-
 
                     g.drawImage(currImg, y * 30, x * 30, null);
                 }
@@ -202,21 +203,25 @@ public class GameEngine extends JPanel implements ActionListener {
                 e.printStackTrace();
             }
         }
-        Timer endGame = new Timer(600000000, new ActionListener() {
+        Timer endGame = new Timer(60000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
-                Message2 = "Looser";
+                youLoose = true;
                 isRunning = false;
-                EndScreen2 = new ImageIcon("resources\\SadNakov.png").getImage();
-                g.drawImage(EndScreen2, 70, 30, null);
 
-                g.setColor(Color.BLUE);
-                g.setFont(font);
-                g.drawString(Message2, 150, 200);
             }
         });
         endGame.start();
+        if (isRunning == false && youLoose) {
+            Message2 = "Looser";
+            EndScreen2 = new ImageIcon("resources\\SadNakov.png").getImage();
+            g.drawImage(EndScreen2, 140, 350, null);
+
+            g.setColor(Color.BLUE);
+            g.setFont(font);
+            g.drawString(Message2, 150, 200);
+        }
     }
 
     private void setPlayer() {

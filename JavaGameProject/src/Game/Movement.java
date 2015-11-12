@@ -1,10 +1,7 @@
 package Game;
 
-import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
-
 
 public class Movement extends KeyAdapter {
     private final String UP = "UP";
