@@ -19,6 +19,7 @@ public class GameEngine extends JPanel implements ActionListener {
     private String Message2 = "";
 
     private Font font = new Font("Serif", Font.BOLD, 125);
+    private Font stopwatchFont = new Font("Serif", Font.ITALIC, 30);
     private Image EndScreen;
     private Image EndScreen2;
 
@@ -26,6 +27,7 @@ public class GameEngine extends JPanel implements ActionListener {
     private boolean youLoose = false;
 
     private int Counter = 0;
+    private int TimeLeft = 30;
 
     private Image red1;
     private Image red2;
@@ -36,7 +38,7 @@ public class GameEngine extends JPanel implements ActionListener {
 
     public GameEngine(){
         try {
-            Sound.music(true);
+            Sound.music(isRunning);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -101,7 +103,13 @@ public class GameEngine extends JPanel implements ActionListener {
             }
         });
         tick.start();
-
+        Timer stopwatch = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TimeLeft--;
+            }
+        });
+        stopwatch.start();
     }
 
     public void actionPerformed (ActionEvent e){
@@ -166,22 +174,16 @@ public class GameEngine extends JPanel implements ActionListener {
                     g.drawImage(this.red3, 21 * 30, 21 * 30, null);
                     g.drawImage(this.green3, 1 * 30, 21 * 30, null);
                     g.drawImage(this.green3, 21 * 30, 1 * 30, null);}
-//                }else if ((Counter % 2 == 0) && (Counter % 4 != 0)){
-//                    g.drawImage(this.red2, 1 * 30, 1 * 30, null);
-//                    g.drawImage(this.red2, 21 * 30, 21 * 30, null);
-//                    g.drawImage(this.green2, 1 * 30, 21 * 30, null);
-//                    g.drawImage(this.green2, 21 * 30, 1 * 30, null);
-//                }else{
-//                    g.drawImage(this.red1, 1 * 30, 1 * 30, null);
-//                    g.drawImage(this.red1, 21 * 30, 21 * 30, null);
-//                    g.drawImage(this.green1, 1 * 30, 21 * 30, null);
-//                    g.drawImage(this.green1, 21 * 30, 1 * 30, null);
-//                }
+
 
                 // Draw player on top
                 g.drawImage(mapObj.getPlayer(), p.getCol() * 30, p.getRow() * 30, null);
                 repaint();
             }
+            String shownTimer = Integer.toString(TimeLeft);
+            g.setColor(Color.ORANGE);
+            g.setFont(stopwatchFont);
+            g.drawString("Time Left: 00:" + shownTimer, 90, 25);
         }
         if ((p.getRow() == 0 && p.getCol() == 11) ||
                 (p.getRow() == 11 && p.getCol() == 0) ||
@@ -203,7 +205,7 @@ public class GameEngine extends JPanel implements ActionListener {
                 e.printStackTrace();
             }
         }
-        Timer endGame = new Timer(30000, new ActionListener() {
+        Timer endGame = new Timer(TimeLeft*1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
@@ -213,6 +215,7 @@ public class GameEngine extends JPanel implements ActionListener {
             }
         });
         endGame.start();
+
         if (isRunning == false && youLoose) {
             Message2 = "You Lost";
             EndScreen2 = new ImageIcon("resources\\SadNakov.png").getImage();
