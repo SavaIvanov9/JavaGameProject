@@ -26,6 +26,7 @@ public class Map {
             teleportPoint,
             player;
 
+
     public Map() {
         ImageIcon img = new ImageIcon("resources\\grass2.jpg");
         grass = img.getImage();
@@ -36,6 +37,7 @@ public class Map {
         teleportPoint = new ImageIcon("resources\\teleport.jpg").getImage();
         img = new ImageIcon("resources\\player1.png");
         player = img.getImage();
+
 
         openFile();
         readFile();
@@ -61,6 +63,7 @@ public class Map {
     public Image getTeleportPoint() {
         return teleportPoint;
     }
+
 
     public Image getPlayer () { return player; }
 

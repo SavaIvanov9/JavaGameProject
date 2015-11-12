@@ -1,7 +1,9 @@
 package Game;
 
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 
 
 public class Movement extends KeyAdapter {
@@ -12,6 +14,7 @@ public class Movement extends KeyAdapter {
 
     private Player p;
     private Map map;
+
 
     public Movement(Player player, Map map){
         this.p = player;
@@ -46,6 +49,7 @@ public class Movement extends KeyAdapter {
                 this.p.movePlayer(currPlayerRow, currPLayerCol + 1);
             }
         }
+        //teleport points
         if (p.getRow() == 1 && p.getCol() == 1) {
             p.movePlayer(21, 21);
         }else if (p.getRow() == 21 && p.getCol() == 21) {
@@ -55,6 +59,8 @@ public class Movement extends KeyAdapter {
         }else if (p.getRow() == 21 && p.getCol() == 1) {
             p.movePlayer(1, 21);
         }
+
+
 
     }
 
