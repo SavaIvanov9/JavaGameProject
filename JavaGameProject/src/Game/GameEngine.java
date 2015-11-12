@@ -203,7 +203,7 @@ public class GameEngine extends JPanel implements ActionListener {
                 e.printStackTrace();
             }
         }
-        Timer endGame = new Timer(60000, new ActionListener() {
+        Timer endGame = new Timer(30000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
@@ -214,13 +214,13 @@ public class GameEngine extends JPanel implements ActionListener {
         });
         endGame.start();
         if (isRunning == false && youLoose) {
-            Message2 = "Looser";
+            Message2 = "You Lost";
             EndScreen2 = new ImageIcon("resources\\SadNakov.png").getImage();
-            g.drawImage(EndScreen2, 140, 350, null);
+            g.drawImage(EndScreen2, 120, 350, null);
 
-            g.setColor(Color.BLUE);
+            g.setColor(Color.RED);
             g.setFont(font);
-            g.drawString(Message2, 150, 200);
+            g.drawString(Message2, 100, 200);
         }
     }
 
