@@ -1,7 +1,7 @@
 # JavaGameProject
 Maze Runner Game
 
-# Teamwork Project Assignment ( [Java Funda](https://softuni.bg/courses/java-basics/) [mentals Course @ SoftUni](https://softuni.bg/courses/java-basics/))
+# Teamwork Project Assignment ( [Java Funda](https://softuni.bg/courses/java-basics/)[mentals Course @ SoftUni](https://softuni.bg/courses/java-basics/))
 
 Design and implement **a Java-based game** by choice. It could be a well-known game like Minesweeper, Tetris or Xonix or a game designed by your team.
 
